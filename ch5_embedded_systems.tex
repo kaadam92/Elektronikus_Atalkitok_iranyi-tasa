@@ -26,7 +26,30 @@ Az $I^2C$ (Inter-Integrated Circuit) egy szinkon, csomagkapcsolt soros kommunik�
 
 Leggyakrabban külsö ADC-k, EEPROM-ok és egyéb Flash memóriák, digitális érzékelők,  vagy egyszerű kijelzők vezérlésésre alkalmazzák.
 
-Az I2C kommunikáció fizikai rétege 2 vezetékeből áll, melyre a perifériák open-collectoros kimenetekkel csatlakoznak, emiatt a busz vezetékeit fel kell húzni tápfeszültésgre. A tápfeszültségre felhúzú ellenállás méretét a kommunikációs sebesség, illetve a buszon található eszközök kapcitív terhelése határozza meg
+Az I2C kommunikáció fizikai rétege 2 vezetékeből áll, melyre a perifériák open-collectoros kimenetekkel csatlakoznak, emiatt a busz vezetékeit fel kell húzni tápfeszültésgre. A tápfeszültségre felhúzú ellenállás méretét a kommunikációs sebesség, illetve a buszon található eszközök kapcitív terhelése határozza meg. Ez azt is jelenti, hogy ha a buszon bármely ezköz lehúzza bármely vezetéket annak feszültsége 0 lesz. Ez a két vezeték az SCL, azaz az órajelet közvetítő vezeték, illetve az SDA azaz az adatot közvetítő vezeték. Mivel az I2C buszon jelek nem diferenciális jelvátvitellel közlekednek, hanem egy vezetéken, ami az elektronika közös referencia feszültségéhez (GND) képest változtatja az értékét, single-ended kommunikációs vonalnak nevezzük. I2C buszon a logikai magas szint a magas feszültségnek felel meg, míg a logikai alacsony szint, a kis feszültségnek. A MASTER egység az üzenetek kezdetét un. START bittel jelzi, amely nem más mint az SDA vezeték alacsony állapotba állítása az SCL vezeték lehúzása nélkül nélkül. A STOP bit hasonló logika mentén, az órajel fix magas állapota melletti SDA magasba állítást jelenti az üzenet végén.
+
+\input{Figures/fig_includes/ch5_embedded/i2c_layout}
+
+A buszon két típusú eszköz található:
+\begin{itemize}
+    \item Master - ezen ezközök indítják a kommunikációt
+    \item Slave - ezen eszközök reagálnak a kommunikációs kérdésekre
+\end{itemize}
+
+Egy buszon szerepelhet több master is, illetve a szerepeket akár dinamikusan is cserélhetik az eszközök, egyszerre azonban csak egyetlen eszköz adhat a buszon.
+
+A buszon az eszközök alábbi üzemállapotokkal fordulhatnak elő:
+\begin{itemize}
+    \item master transmit
+    \item master receive
+    \item slave transmit
+    \item slave receive
+\end{itemize}
+
+A buszon található különböző egységek megkülönböztetésére a cím szolgál. A master egység a START bit leadása után a MASTER elküldi a SLAVE egység 7 bites címét, majd ez után 1 bitben jelzi, ohgy írni (0), vagy olvasni (1) kíván az adott eszközbe/eszközből. Amennyiben a megcímzett SLAVE egység elérhető a buszon, így egy ACK bit kiadásával válaszol. A gyakorlatban ez az SDA vonal lehúzásást jeleni egy bit idejére.
+
+
+
 
 \input{Examples/ch4_i2c1}
 \input{Examples/ch4_i2c2}
