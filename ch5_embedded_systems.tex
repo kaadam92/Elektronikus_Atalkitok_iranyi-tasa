@@ -1,0 +1,36 @@
+\section{Beágyazott irányító rendszerek}
+\vspace{5cm}
+\subsection{Beágyazott irányító rendszerek típusai}
+
+\subsection{Mikrovezérlő alapú rendszerek}
+
+\subsubsection{Gyakran használt mikrovezérlő perifériák}
+
+\subsection{Beágyazott kommunikációs interfészek}
+
+\subsection{Digitális kommunikációs vonalak felépítése}
+
+Digitális eszközök közötti adatcserére az iparban szabványoks kommunikációs protokollokat, kommuinkációs formákat haszánlunk. Ezek rendkívül sokrétűek, az olvasó is találkozhat velük a mindennapjaiban, legyen szó egy FM rádióadásról, a GSM hálózatról, vagy egy Ethernet kapcsolatról. Ezek a kommunkációs eljárások különböző, standard rétegeket implementálnak, melyek akár fel is cserélhetőek egymás között. (Pl. TCP/IP alapú kapcsolat megvalósítható WiFi-n és vezetlekes Ethernet hálózaton is) Ilyen modellszerű leírást ad meg az Open Systems Interconnection model (OSI model) is.
+
+\paragraph{Layer 1: Fizikai réteg}
+
+A fizikai réteg azt határozza meg, hogy milyen fizikai közegen keresztül áramlik az információ az eszközök között. A fizikai réteg specifikálja, hogy vezetékes, vagy vezeték nélküli kapcsolatról van-e szó, az átvitt jelek sázmát, az elvárt feszültésgszinteket és időzítéseket, a moduláció módját. A fizikai réteg dönti el, hogy az adat mely irányba áramolhat, simplex (egy irányú), half duplex (időosztáyban két irányú), vagy full duplex (folyamatosan két irányú) kommunikációról beszélünk-e.
+
+\paragraph{Layer 2: Adatkapcsolati réteg}
+
+\subsubsection{I2C}
+
+Az $I^2C$ (Inter-Integrated Circuit) egy szinkon, csomagkapcsolt soros kommunikációs forma, melyet 1982-ben definiált a Philips Semiconductor (ma NXP). Igen elterjed, általában nyomtatott áramkörön belül, a különböző digitális eszközök között használt kommunikációs forma. Több, kompatibilis változata is létezik, iylen pl. az SMBus.
+
+Leggyakrabban külsö ADC-k, EEPROM-ok és egyéb Flash memóriák, digitális érzékelők,  vagy egyszerű kijelzők vezérlésésre alkalmazzák.
+
+Az I2C kommunikáció fizikai rétege 2 vezetékeből áll, melyre a perifériák open-collectoros kimenetekkel csatlakoznak, emiatt a busz vezetékeit fel kell húzni tápfeszültésgre. A tápfeszültségre felhúzú ellenállás méretét a kommunikációs sebesség, illetve a buszon található eszközök kapcitív terhelése határozza meg
+
+
+\subsubsection{SPI}
+\subsection{UART}
+\subsection{CAN}
+
+
+\vspace{-1.5mm}
+\newpage
